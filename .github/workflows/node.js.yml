@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    environment: Production
     env:
       PORT: ${{ secrets.PORT }}
       HOST: ${{ secrets.HOST }}

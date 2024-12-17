@@ -8,16 +8,18 @@ on:
 
 jobs:
   build:
+    environment: Production
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set environment variables
-        run: echo "PORT=${{ secrets.PORT }}\nHOST=${{ secrets.HOST }}\nCLOSING_DATA_1=${{ secrets.CLOSING_DATA_1 }}" > .env
+      
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+        run: docker build . --file Dockerfile --tag my-image-name:latest
+
       - name: Run the Docker container
         run: |
+          echo "PORT=$PORT"
           docker run -d \
             -p ${PORT}:${PORT} \
             -e PORT=${PORT} \
