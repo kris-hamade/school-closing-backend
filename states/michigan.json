@@ -1,0 +1,845 @@
+{
+    "Michigan": {
+        "Allegan Area Educational Service Agency": {
+            "Allegan County": [
+                "Allegan Public Schools",
+                "Fennville Public Schools",
+                "Glenn Public School District",
+                "Hopkins Public Schools",
+                "Martin Public Schools",
+                "Otsego Public Schools",
+                "Plainwell Community Schools",
+                "Wayland Union Schools"
+            ]
+        },
+        "Alpena-Montmorency-Alcona Education Service District": {
+            "Alcona County": [
+                "Alcona Community Schools"
+            ],
+            "Alpena County": [
+                "Alpena Public Schools"
+            ],
+            "Montmorency County": [
+                "Atlanta Community Schools",
+                "Hillman Community Schools"
+            ]
+        },
+        "Barry Intermediate School District": {
+            "Barry County": [
+                "Delton-Kellogg School District",
+                "Hastings Area School District"
+            ]
+        },
+        "Bay-Arenac Intermediate School District": {
+            "Arenac County": [
+                "Au Gres-Sims School District",
+                "Standish-Sterling Community Schools"
+            ],
+            "Bay County": [
+                "Bangor Township Schools",
+                "Bay City School District",
+                "Essexville-Hampton Public Schools",
+                "Pinconning Area Schools"
+            ]
+        },
+        "Berrien Regional Educational Service Agency": {
+            "Berrien County": [
+                "Benton Harbor Area Schools",
+                "Berrien Springs Public Schools",
+                "Brandywine Community Schools",
+                "Bridgman Public Schools",
+                "Buchanan Community Schools",
+                "Coloma Community Schools",
+                "Eau Claire Public Schools",
+                "Hagar Township School District 6",
+                "Lakeshore School District",
+                "New Buffalo Area Schools",
+                "Niles Community Schools",
+                "River Valley School District",
+                "Sodus Township School District 5",
+                "St. Joseph Public Schools",
+                "Watervliet School District"
+            ]
+        },
+        "Branch Intermediate School District": {
+            "Branch County": [
+                "Bronson Community School District",
+                "Coldwater Community Schools",
+                "Quincy Community School District"
+            ]
+        },
+        "C.O.O.R. Intermediate School District": {
+            "Crawford County": [
+                "Crawford AuSable Schools"
+            ],
+            "Ogemaw County": [
+                "West Branch-Rose City Area Schools"
+            ],
+            "Oscoda County": [
+                "Fairview Area School District",
+                "Mio-AuSable Schools"
+            ],
+            "Roscommon County": [
+                "Houghton Lake Community Schools",
+                "Roscommon Area Public Schools"
+            ]
+        },
+        "Calhoun Intermediate School District": {
+            "Calhoun County": [
+                "Athens Area Schools",
+                "Battle Creek Public Schools",
+                "Harper Creek Community Schools",
+                "Homer Community School District",
+                "Lakeview School District",
+                "Mar Lee School District",
+                "Marshall Public Schools",
+                "Pennfield Schools",
+                "Tekonsha Community Schools",
+                "Union City Community Schools"
+            ],
+            "Eaton County": [
+                "Bellevue Community Schools",
+                "Olivet Community Schools"
+            ]
+        },
+        "Charlevoix-Emmet Intermediate School District": {
+            "Antrim County": [
+                "Central Lake Public Schools",
+                "Ellsworth Community School"
+            ],
+            "Charlevoix County": [
+                "Beaver Island Community School",
+                "Boyne City Public Schools",
+                "Boyne Falls Public School District",
+                "Charlevoix Public Schools",
+                "East Jordan Public Schools"
+            ],
+            "Emmet County": [
+                "Alanson Public Schools",
+                "Harbor Springs School District",
+                "Pellston Public Schools",
+                "Public Schools of Petoskey"
+            ]
+        },
+        "Cheboygan-Otsego-Presque Isle Education Service District": {
+            "Cheboygan County": [
+                "Cheboygan Area Schools",
+                "Inland Lakes Schools",
+                "Mackinaw City Public Schools",
+                "Wolverine Community Schools"
+            ],
+            "Otsego County": [
+                "Gaylord Community Schools",
+                "Johannesburg-Lewiston Area Schools",
+                "Vanderbilt Area Schools"
+            ],
+            "Presque Isle County": [
+                "Onaway Area Community School District",
+                "Posen Consolidated School District No. 9",
+                "Rogers City Area Schools"
+            ]
+        },
+        "Clare-Gladwin Regional Education Service District": {
+            "Clare County": [
+                "Clare Public Schools",
+                "Farwell Area Schools",
+                "Harrison Community Schools"
+            ],
+            "Gladwin County": [
+                "Beaverton Schools",
+                "Gladwin Community Schools"
+            ]
+        },
+        "Clinton County Regional Educational Service Agency": {
+            "Clinton County": [
+                "Bath Community Schools",
+                "Dewitt Public Schools",
+                "Fowler Public Schools",
+                "Ovid-Elsie Area Schools",
+                "Pewamo-Westphalia Community Schools",
+                "St. Johns Public Schools"
+            ]
+        },
+        "Copper Country Intermediate School District": {
+            "Baraga County": [
+                "Arvon Township School District",
+                "Baraga Area Schools",
+                "L'Anse Area Schools"
+            ],
+            "Houghton County": [
+                "Adams Township School District",
+                "Chassell Township School District",
+                "Dollar Bay-Tamarack City Area K-12 School",
+                "Elm River Township School District",
+                "Hancock Public Schools",
+                "Houghton-Portage Township School District",
+                "Lake Linden-Hubbell School District",
+                "Public Schools of Calumet, Laurium & Keweenaw",
+                "Stanton Township Public Schools"
+            ],
+            "Keweenaw County": [
+                "Grant Township School District 2"
+            ]
+        },
+        "Delta-Schoolcraft Intermediate School District": {
+            "Delta County": [
+                "Bark River-Harris School District",
+                "Big Bay de Noc School District",
+                "Escanaba Area Public Schools",
+                "Gladstone Area Schools",
+                "Mid Peninsula School District",
+                "Rapid River Public Schools"
+            ],
+            "Schoolcraft County": [
+                "Manistique Area Schools"
+            ]
+        },
+        "Dickinson-Iron Intermediate School District": {
+            "Dickinson County": [
+                "Breitung Township School District",
+                "Iron Mountain Public Schools",
+                "North Dickinson County Schools",
+                "Norway-Vulcan Area Schools"
+            ],
+            "Iron County": [
+                "Forest Park School District",
+                "West Iron County Public Schools"
+            ]
+        },
+        "Eastern Upper Peninsula Intermediate School District": {
+            "Chippewa County": [
+                "Brimley Area Schools",
+                "DeTour Area Schools",
+                "Pickford Public Schools",
+                "Rudyard Area Schools",
+                "Sault Ste. Marie Area Schools",
+                "Whitefish Township Schools"
+            ],
+            "Luce County": [
+                "Tahquamenon Area Schools"
+            ],
+            "Mackinac County": [
+                "Bois Blanc Pines School District",
+                "Engadine Consolidated Schools",
+                "Les Cheneaux Community Schools",
+                "Mackinac Island Public Schools",
+                "Moran Township School District",
+                "St. Ignace Area Schools"
+            ]
+        },
+        "Eaton Regional Education Service Agency": {
+            "Eaton County": [
+                "Charlotte Public Schools",
+                "Eaton Rapids Public Schools",
+                "Grand Ledge Public Schools",
+                "Maple Valley Schools",
+                "Oneida Township School District 3",
+                "Potterville Public Schools"
+            ]
+        },
+        "Genesee Intermediate School District": {
+            "Genesee County": [
+                "Atherton Community Schools",
+                "Beecher Community School District",
+                "Bendle Public Schools",
+                "Bentley Community School District",
+                "Carman-Ainsworth Community Schools",
+                "Clio Area School District",
+                "Davison Community Schools",
+                "Fenton Area Public Schools",
+                "School District of the City of Flint",
+                "Flushing Community Schools",
+                "Genesee School District",
+                "Goodrich Area Schools",
+                "Grand Blanc Community Schools",
+                "Kearsley Community Schools",
+                "Lake Fenton Community Schools",
+                "LakeVille Community School District",
+                "Linden Community Schools",
+                "Montrose Community Schools",
+                "Mt. Morris Consolidated Schools",
+                "Swartz Creek Community Schools",
+                "Westwood Heights Schools"
+            ]
+        },
+        "Gogebic-Ontonagon Intermediate School District": {
+            "Gogebic County": [
+                "Bessemer Area School District",
+                "Ironwood Area Schools of Gogebic County",
+                "Wakefield-Marenisco School District",
+                "Watersmeet Township School District"
+            ],
+            "Ontonagon County": [
+                "Ewen-Trout Creek Consolidated School District",
+                "Ontonagon Area School District"
+            ]
+        },
+        "Gratiot-Isabella Regional Education Service District": {
+            "Gratiot County": [
+                "Alma Public Schools",
+                "Ashley Community Schools",
+                "Breckenridge Community Schools",
+                "Fulton Schools",
+                "Ithaca Public Schools",
+                "St. Louis Public Schools"
+            ],
+            "Isabella County": [
+                "Beal City Public Schools",
+                "Mt. Pleasant City School District",
+                "Shepherd Public Schools"
+            ]
+        },
+        "Heritage Southwest Intermediate School District": {
+            "Cass County": [
+                "Cassopolis Public Schools",
+                "Dowagiac Union School District",
+                "Edwardsburg Public Schools",
+                "Marcellus Community Schools"
+            ]
+        },
+        "Hillsdale Intermediate School District": {
+            "Hillsdale County": [
+                "Camden-Frontier Schools",
+                "Hillsdale Community Schools",
+                "Jonesville Community Schools",
+                "Litchfield Community Schools",
+                "North Adams-Jerome Public Schools",
+                "Pittsford Area Schools",
+                "Reading Community Schools",
+                "Waldron Area Schools"
+            ]
+        },
+        "Huron Intermediate School District": {
+            "Huron County": [
+                "Bad Axe Public Schools",
+                "Caseville Public Schools",
+                "Church School District",
+                "Colfax Township School District 1F",
+                "Elkton-Pigeon-Bay Port Laker Schools",
+                "Harbor Beach Community Schools",
+                "North Huron School District",
+                "Owendale-Gagetown Area School District",
+                "Sigel Township School District 3F",
+                "Sigel Township School District 4F",
+                "Ubly Community Schools",
+                "Verona Township School District 1F"
+            ]
+        },
+        "Ingham Intermediate School District": {
+            "Ingham County": [
+                "Dansville Schools",
+                "East Lansing School District",
+                "Haslett Public Schools",
+                "Holt Public Schools",
+                "Lansing Public School District",
+                "Leslie Public Schools",
+                "Mason Public Schools",
+                "Okemos Public Schools",
+                "Stockbridge Community Schools",
+                "Waverly Community Schools",
+                "Webberville Community Schools",
+                "Williamston Community Schools"
+            ]
+        },
+        "Ionia Intermediate School District": {
+            "Ionia County": [
+                "Belding Area School District",
+                "Berlin Township School District 3",
+                "Easton Township School District 6",
+                "Ionia Public Schools",
+                "Ionia Township School District 2",
+                "Lakewood Public Schools",
+                "Portland Public Schools",
+                "Saranac Community Schools"
+            ]
+        },
+        "Iosco Regional Educational Service Agency": {
+            "Iosco County": [
+                "Hale Area Schools",
+                "Oscoda Area Schools",
+                "Tawas Area Schools",
+                "Whittemore-Prescott Area Schools"
+            ]
+        },
+        "Jackson Intermediate School District": {
+            "Jackson County": [
+                "Columbia School District",
+                "Concord Community Schools",
+                "East Jackson Community Schools",
+                "Grass Lake Community Schools",
+                "Hanover-Horton School District",
+                "Jackson Public Schools",
+                "Michigan Center School District",
+                "Napoleon Community Schools",
+                "Northwest Community Schools",
+                "Springport Public Schools",
+                "Vandercook Lake Public Schools",
+                "Western School District"
+            ]
+        },
+        "Kalamazoo Regional Educational Service Agency": {
+            "Kalamazoo County": [
+                "Climax-Scotts Community Schools",
+                "Comstock Public Schools",
+                "Galesburg-Augusta Community Schools",
+                "Gull Lake Community Schools",
+                "Kalamazoo Public Schools",
+                "Parchment School District",
+                "Portage Public Schools",
+                "Schoolcraft Community Schools",
+                "Vicksburg Community Schools"
+            ]
+        },
+        "Kent Intermediate School District": {
+            "Barry County": [
+                "Thornapple Kellogg School District"
+            ],
+            "Kent County": [
+                "Byron Center Public Schools",
+                "Caledonia Community Schools",
+                "Cedar Springs Public Schools",
+                "Comstock Park Public Schools",
+                "East Grand Rapids Public Schools",
+                "Forest Hills Public Schools",
+                "Godfrey-Lee Public Schools",
+                "Godwin Heights Public Schools",
+                "Grand Rapids Public Schools",
+                "Grandville Public Schools",
+                "Kelloggsville Public Schools",
+                "Kenowa Hills Public Schools",
+                "Kent City Community Schools",
+                "Kentwood Public Schools",
+                "Lowell Area Schools",
+                "Northview Public Schools",
+                "Rockford Public Schools",
+                "Sparta Area Schools",
+                "Wyoming Public Schools"
+            ]
+        },
+        "Lapeer Intermediate School District": {
+            "Lapeer County": [
+                "Almont Community Schools",
+                "Dryden Community Schools",
+                "Imlay City Community Schools",
+                "Lapeer Community Schools",
+                "North Branch Area Schools"
+            ]
+        },
+        "Lenawee Intermediate School District": {
+            "Lenawee County": [
+                "Addison Community Schools",
+                "Adrian Public Schools",
+                "Blissfield Community Schools",
+                "Britton-Deerfield Schools",
+                "Clinton Community Schools",
+                "Hudson Area Schools",
+                "Madison School District",
+                "Morenci Area Schools",
+                "Onsted Community Schools",
+                "Sand Creek Community Schools",
+                "Tecumseh Public Schools"
+            ]
+        },
+        "Livingston Educational Service Agency": {
+            "Livingston County": [
+                "Brighton Area Schools",
+                "Fowlerville Community Schools",
+                "Hartland Consolidated Schools",
+                "Howell Public Schools",
+                "Pinckney Community Schools"
+            ]
+        },
+        "Macomb Intermediate School District": {
+            "Macomb County": [
+                "Anchor Bay School District",
+                "Armada Area Schools",
+                "Center Line Public Schools",
+                "Chippewa Valley Schools",
+                "Clintondale Community Schools",
+                "Eastpointe Community Schools",
+                "Fitzgerald Public Schools",
+                "Fraser Public Schools",
+                "Lake Shore Public Schools",
+                "Lakeview Public Schools",
+                "L'Anse Creuse Public Schools",
+                "Mount Clemens Community School District",
+                "New Haven Community Schools",
+                "Richmond Community Schools",
+                "Romeo Community Schools",
+                "Roseville Community Schools",
+                "South Lake Schools",
+                "Utica Community Schools",
+                "Van Dyke Public Schools",
+                "Warren Consolidated Schools",
+                "Warren Woods Public Schools"
+            ]
+        },
+        "Manistee Intermediate School District": {
+            "Manistee County": [
+                "Bear Lake School District",
+                "Kaleva Norman Dickson School District",
+                "Manistee Area Public Schools",
+                "Onekama Consolidated Schools"
+            ]
+        },
+        "Marquette-Alger Regional Educational Service Agency": {
+            "Alger County": [
+                "AuTrain-Onota Public Schools",
+                "Burt Township School District",
+                "Munising Public Schools",
+                "Superior Central School District"
+            ],
+            "Marquette County": [
+                "Gwinn Area Community Schools",
+                "Ishpeming Public School District No. 1",
+                "Marquette Area Public Schools",
+                "Negaunee Public Schools",
+                "NICE Community School District",
+                "Powell Township Schools",
+                "Republic-Michigamme Schools",
+                "Wells Township School District"
+            ]
+        },
+        "Mecosta-Osceola Intermediate School District": {
+            "Mecosta County": [
+                "Big Rapids Public Schools",
+                "Chippewa Hills School District",
+                "Morley Stanwood Community Schools"
+            ],
+            "Osceola County": [
+                "Evart Public Schools",
+                "Reed City Area Public Schools"
+            ]
+        },
+        "Menominee Intermediate School District": {
+            "Menominee County": [
+                "Carney-Nadeau Public Schools",
+                "Menominee Area Public Schools",
+                "North Central Area Schools",
+                "Stephenson Area Public Schools"
+            ]
+        },
+        "Midland County Educational Service Agency": {
+            "Midland County": [
+                "Bullock Creek School District",
+                "Coleman Community Schools",
+                "Meridian Public Schools",
+                "Midland Public Schools"
+            ]
+        },
+        "Monroe Intermediate School District": {
+            "Monroe County": [
+                "Airport Community Schools",
+                "Bedford Public Schools",
+                "Dundee Community Schools",
+                "Ida Public Schools",
+                "Jefferson Schools",
+                "Mason Colsolidated Schools",
+                "Monroe Public Schools",
+                "Summerfield Schools",
+                "Whiteford Agricultural School District"
+            ]
+        },
+        "Montcalm Area Intermediate School District": {
+            "Montcalm County": [
+                "Carson City-Crystal Area Schools",
+                "Central Montcalm Public Schools",
+                "Greenville Public Schools",
+                "Lakeview Community Schools",
+                "Montabella Community Schools",
+                "Tri County Area Schools",
+                "Vestaburg Community Schools"
+            ]
+        },
+        "Muskegon Area Intermediate School District": {
+            "Muskegon County": [
+                "Fruitport Community Schools",
+                "Holton Public Schools",
+                "Mona Shores Public School District",
+                "Montague Area Public Schools",
+                "Muskegon Heights School District",
+                "Public Schools of the City of Muskegon",
+                "North Muskegon Public Schools",
+                "Oakridge Public Schools",
+                "Orchard View Schools",
+                "Ravenna Public Schools",
+                "Reeths-Puffer Schools",
+                "Whitehall District Schools"
+            ]
+        },
+        "Newaygo County Regional Educational Service Agency": {
+            "Newaygo County": [
+                "Big Jackson School District",
+                "Fremont Public School District",
+                "Grant Public School District",
+                "Hesperia Community Schools",
+                "Newaygo Public School District",
+                "White Cloud Public Schools"
+            ]
+        },
+        "Northwest Educational Services": {
+            "Antrim County": [
+                "Alba Public Schools",
+                "Bellaire Public Schools",
+                "Elk Rapids Schools",
+                "Mancelona Public Schools"
+            ],
+            "Benzie County": [
+                "Benzie County Central Schools",
+                "Frankfort-Elberta Area Schools"
+            ],
+            "Grand Traverse County": [
+                "Buckley Community Schools",
+                "Kingsley Area Schools",
+                "Traverse City Area Public Schools"
+            ],
+            "Kalkaska County": [
+                "Excelsior Township School District 1",
+                "Forest Area Community Schools",
+                "Kalkaska Public Schools"
+            ],
+            "Leelanau County": [
+                "Glen Lake Community Schools",
+                "Leland Public School District",
+                "Northport Public School District",
+                "Suttons Bay Public Schools"
+            ]
+        },
+        "Oakland Schools": {
+            "Oakland County": [
+                "Avondale School District",
+                "Berkley School District",
+                "Birmingham Public Schools",
+                "Bloomfield Hills School District",
+                "Brandon School District",
+                "Clarenceville School District",
+                "Clarkston Community Schools",
+                "Clawson Public Schools",
+                "Farmington Public Schools",
+                "Ferndale Public Schools",
+                "Hazel Park Community Schools",
+                "Holly Area School District",
+                "Huron Valley Schools",
+                "Lake Orion Community Schools",
+                "Lamphere Public Schools",
+                "Madison Dist Public Schools- Oakland",
+                "Novi Community School District",
+                "Oak Park Schools",
+                "Oxford Community Schools",
+                "Pontiac School District",
+                "Rochester Community Schools",
+                "Royal Oak School District",
+                "South Lyon Community Schools",
+                "Southfield Public Schools",
+                "Troy School District",
+                "Walled Lake School District",
+                "Waterford School District",
+                "West Bloomfield School District"
+            ]
+        },
+        "Ottawa Area Intermediate School District": {
+            "Allegan County": [
+                "Hamilton Community Schools",
+                "Saugatuck Public Schools"
+            ],
+            "Ottawa County": [
+                "Allendale Public Schools",
+                "Coopersville Area Public School District",
+                "Grand Haven Area Public Schools",
+                "Holland City School District",
+                "Hudsonville Public School District",
+                "Jenison Public Schools",
+                "Spring Lake Public Schools",
+                "West Ottawa Public School District",
+                "Zeeland Public Schools"
+            ]
+        },
+        "Saginaw Intermediate School District": {
+            "Saginaw County": [
+                "Birch Run Area Schools",
+                "Bridgeport-Spaulding Community School District",
+                "Carrollton Public Schools",
+                "Chesaning Union Schools",
+                "Frankenmuth School District",
+                "Freeland Community School District",
+                "Hemlock Public School District",
+                "Merrill Community Schools",
+                "Saginaw Township Community Schools",
+                "Saginaw City School District",
+                "St. Charles Community Schools",
+                "Swan Valley School District"
+            ]
+        },
+        "Sanilac Intermediate School District": {
+            "Sanilac County": [
+                "Brown City Community Schools",
+                "Carsonville-Port Sanilac School District",
+                "Croswell-Lexington Community Schools",
+                "Deckerville Community School District",
+                "Marlette Community Schools",
+                "Peck Community School District",
+                "Sandusky Community School District"
+            ]
+        },
+        "Shiawassee Regional Educational Service District": {
+            "Shiawassee County": [
+                "Byron Area Schools",
+                "Corunna Public Schools",
+                "Durand Area Schools",
+                "Laingsburg Community Schools",
+                "Morrice Area Schools",
+                "New Lothrop Area Public Schools",
+                "Owosso Public Schools",
+                "Perry Public Schools"
+            ]
+        },
+        "St. Clair County Regional Educational Service Agency": {
+            "St. Clair County": [
+                "Algonac Community School District",
+                "Capac Community Schools",
+                "East China School District",
+                "Marysville Public Schools",
+                "Memphis Community Schools",
+                "Port Huron Area School District",
+                "Yale Public Schools"
+            ]
+        },
+        "St. Joseph County Intermediate School District": {
+            "St. Joseph County": [
+                "Burr Oak Community School District",
+                "Centreville Public Schools",
+                "Colon Community School District",
+                "Constantine Public School District",
+                "Mendon Community School District",
+                "Nottawa Community School",
+                "Sturgis Public Schools",
+                "Three Rivers Community Schools",
+                "White Pigeon Community Schools"
+            ]
+        },
+        "State of Michigan": {},
+        "Tuscola Intermediate School District": {
+            "Tuscola County": [
+                "Akron-Fairgrove Schools",
+                "Caro Community Schools",
+                "Cass City Public Schools",
+                "Kingston Community School District",
+                "Mayville Community School District",
+                "Millington Community Schools",
+                "Reese Public Schools",
+                "Unionville-Sebewaing Area School District",
+                "Vassar Public Schools"
+            ]
+        },
+        "Van Buren Intermediate School District": {
+            "Van Buren County": [
+                "Bangor Public Schools",
+                "Bangor Township School District 8",
+                "Bloomingdale Public School District",
+                "Covert Public Schools",
+                "Decatur Public Schools",
+                "Gobles Public School District",
+                "Hartford Public Schools",
+                "Lawrence Public Schools",
+                "Lawton Community School District",
+                "Mattawan Consolidated School",
+                "Paw Paw Public School District",
+                "South Haven Public Schools"
+            ]
+        },
+        "Washtenaw Intermediate School District": {
+            "Washtenaw County": [
+                "Ann Arbor Public Schools",
+                "Chelsea School District",
+                "Dexter Community School District",
+                "Lincoln Consolidated School District",
+                "Manchester Community Schools",
+                "Milan Area Schools",
+                "Saline Area Schools",
+                "Whitmore Lake Public School District",
+                "Ypsilanti Community Schools"
+            ]
+        },
+        "Wayne County Regional Educational Service Agency": {
+            "Wayne County": [
+                "Allen Park Public Schools",
+                "Crestwood School District",
+                "Dearborn City School District",
+                "Dearborn Heights School District 7",
+                "Detroit City School District",
+                "Detroit Public Schools Community District",
+                "Ecorse Public Schools",
+                "Flat Rock Community Schools",
+                "Garden City Public Schools",
+                "Gibraltar School District",
+                "Grosse Ile Township Schools",
+                "Grosse Pointe Public Schools",
+                "School District of the City of Hamtramck",
+                "The School District of the City of Harper Woods",
+                "Highland Park City Schools",
+                "Huron School District",
+                "School District of the City of Lincoln Park",
+                "Livonia Public Schools School District",
+                "Melvindale-North Allen Park Schools",
+                "Northville Public Schools",
+                "Plymouth-Canton Community Schools",
+                "Redford Union Schools, District No. 1",
+                "School District of the City of River Rouge",
+                "Riverview Community School District",
+                "Romulus Community Schools",
+                "South Redford School District",
+                "Southgate Community School District",
+                "Taylor School District",
+                "Trenton Public Schools",
+                "Van Buren Public Schools",
+                "Wayne-Westland Community School District",
+                "Westwood Community School District",
+                "Woodhaven-Brownstown School District",
+                "School District of the City of Wyandotte"
+            ]
+        },
+        "West Shore Educational Service District": {
+            "Lake County": [
+                "Baldwin Community Schools"
+            ],
+            "Mason County": [
+                "Ludington Area School District",
+                "Mason County Central Schools",
+                "Mason County Eastern Schools"
+            ],
+            "Oceana County": [
+                "Hart Public School District",
+                "Pentwater Public School District",
+                "Shelby Public Schools",
+                "Walkerville Public Schools"
+            ]
+        },
+        "Wexford-Missaukee Intermediate School District": {
+            "Missaukee County": [
+                "Lake City Area School District",
+                "McBain Rural Agricultural Schools"
+            ],
+            "Osceola County": [
+                "Marion Public Schools",
+                "Pine River Area Schools"
+            ],
+            "Wexford County": [
+                "Cadillac Area Public Schools",
+                "Manton Consolidated Schools",
+                "Mesick Consolidated Schools"
+            ]
+        },
+        "Other": {
+            "Misc": [
+                "Foster's Childcare and Learning Cen",
+                "Fostering Leadership Academy",
+                "LACC Childcare Acdmy",
+                "Merrill Palmer Skillman Inst ECC",
+                "New Morning",
+                "Suburban Truck Driving School",
+                "Wayne County Community College",
+                "Wyandotte Christian Academy"
+            ]
+        }
+    }
+}
