@@ -1,0 +1,58 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    environment: Production
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write # Required to push to GHCR
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Log into GitHub Container Registry (GHCR)
+      - name: Log into registry ${{ env.REGISTRY }}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build and tag Docker image
+      - name: Build the Docker image
+        run: |
+          docker build . --file Dockerfile --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+      # Run the container for testing purposes
+      - name: Run the Docker container
+        run: |
+          echo "PORT=$PORT"
+          docker run -d \
+            -p ${PORT}:${PORT} \
+            -e PORT=${PORT} \
+            -e HOST=${HOST} \
+            -e CLOSING_DATA_1=${CLOSING_DATA_1} \
+            --name school-closing-api \
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+        env:
+          PORT: ${{ secrets.PORT }}
+          HOST: ${{ secrets.HOST }}
+          CLOSING_DATA_1: ${{ secrets.CLOSING_DATA_1 }}
+
+      # Push the Docker image to GHCR
+      - name: Push Docker image to GHCR
+        run: |
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest

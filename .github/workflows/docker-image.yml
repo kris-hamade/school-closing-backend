@@ -13,9 +13,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag my-image-name:latest
+        run: docker build . --file Dockerfile --tag school-closing-api:latest
 
       - name: Run the Docker container
         run: |
@@ -26,7 +26,7 @@ jobs:
             -e HOST=${HOST} \
             -e CLOSING_DATA_1=${CLOSING_DATA_1} \
             --name school-closing-api \
-            my-image-name:latest
+            school-closing-api:latest
         env:
           PORT: ${{ secrets.PORT }}
           HOST: ${{ secrets.HOST }}
