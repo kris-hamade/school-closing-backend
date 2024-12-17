@@ -1,4 +1,3 @@
-# school-closing-backend
 # School Closing Backend
 
 This is a backend service for fetching and processing school closure data. The service periodically checks for updates and provides an API endpoint to retrieve the latest closure information.
