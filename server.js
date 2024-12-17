@@ -4,10 +4,25 @@ const cheerio = require('cheerio');
 const fuzzball = require('fuzzball');
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 const app = express();
 
 dotenv.config();
+
+// CORS Configuration
+const allowedOrigins = ['http://localhost:5173', 'https://misnowday.com'];
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET'],
+    optionsSuccessStatus: 204
+}));
 
 // Use process.env.PORT and process.env.HOST to set the port and host from environment variables
 const PORT = process.env.PORT || 3023;
