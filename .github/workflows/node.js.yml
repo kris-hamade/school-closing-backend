@@ -10,8 +10,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-22.04
+    env:
+      PORT: ${{ secrets.PORT }}
+      HOST: ${{ secrets.HOST }}
+      CLOSING_DATA_1: ${{ secrets.CLOSING_DATA_1 }}
 
     strategy:
       matrix:
@@ -26,4 +29,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: PORT=${{ secrets.PORT }} HOST=${{ secrets.HOST }} CLOSING_DATA_1=${{ secrets.CLOSING_DATA_1 }} npm start
+    - name: Set environment variables
+      run: echo "PORT=${{ secrets.PORT }}\nHOST=${{ secrets.HOST }}\nCLOSING_DATA_1=${{ secrets.CLOSING_DATA_1 }}" > .env
+    - run: docker build . --file Dockerfile --tag school-closing-api:latest
+    - run: |
+        docker run -d \
+          -p $PORT:$PORT \
+          -e PORT=$PORT \
+          -e HOST=$HOST \
+          -e CLOSING_DATA_1=$CLOSING_DATA_1 \
+          --name school-closing-api \
+          school-closing-api:latest

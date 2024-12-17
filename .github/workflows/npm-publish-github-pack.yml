@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
+      - name: Set environment variables
+        run: echo "PORT=${{ secrets.PORT }}\nHOST=${{ secrets.HOST }}\nCLOSING_DATA_1=${{ secrets.CLOSING_DATA_1 }}" > .env
       - run: npm test
         env:
           PORT: ${{ secrets.PORT }}
@@ -35,6 +37,8 @@ jobs:
           node-version: 22
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
+      - name: Set environment variables
+        run: echo "PORT=${{ secrets.PORT }}\nHOST=${{ secrets.HOST }}\nCLOSING_DATA_1=${{ secrets.CLOSING_DATA_1 }}" > .env
       - run: npm publish
         env:
           PORT: ${{ secrets.PORT }}
