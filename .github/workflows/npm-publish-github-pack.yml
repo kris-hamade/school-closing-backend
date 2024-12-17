@@ -45,3 +45,4 @@ jobs:
           PORT: ${{ secrets.PORT }}
           HOST: ${{ secrets.HOST }}
           CLOSING_DATA_1: ${{ secrets.CLOSING_DATA_1 }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
