@@ -17,7 +17,14 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
       - name: Run the Docker container
-        run: docker run -d -p ${{ secrets.PORT }}:${{ secrets.PORT }} --name school-closing-api my-image-name:latest
+        run: |
+          docker run -d \
+            -p ${PORT}:${PORT} \
+            -e PORT=${PORT} \
+            -e HOST=${HOST} \
+            -e CLOSING_DATA_1=${CLOSING_DATA_1} \
+            --name school-closing-api \
+            my-image-name:latest
         env:
           PORT: ${{ secrets.PORT }}
           HOST: ${{ secrets.HOST }}
