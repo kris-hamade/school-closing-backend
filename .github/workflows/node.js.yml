@@ -25,5 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: Create .env file
+      run: echo "PORT=3023\nHOST=0.0.0.0\nCLOSING_DATA_1=your_data_url" > .env
     - run: npm ci
     - run: npm start
