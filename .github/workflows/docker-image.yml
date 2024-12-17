@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Run the Docker container
+      run: docker run -d -p ${{ secrets.PORT }}:${{ secrets.PORT }} --name school-closing-api school-closing-api:latest
+      env:
+        PORT: ${{ secrets.PORT }}
+        HOST: ${{ secrets.HOST }}
+        CLOSING_DATA_1: ${{ secrets.CLOSING_DATA_1 }}
