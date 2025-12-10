@@ -43,9 +43,20 @@ let closureData = {
         dataSource: url || 'unknown',
         totalSchools: 0,
         closedSchools: 0,
-        fetchError: null
+        fetchError: null,
+        pullHistory: [] // Array of { timestamp, success, error }
     },
     isdStatus: {}
+};
+
+// Store previous state for change detection
+let previousClosureData = null;
+
+// Store change events history
+let changeHistory = {
+    statusChanges: [], // Array of { timestamp, isd, county, school, from, to }
+    schoolsAdded: [], // Array of { timestamp, isd, county, school }
+    schoolsRemoved: [] // Array of { timestamp, isd, county, school }
 };
 
 const fetchClosures = async () => {
@@ -228,12 +239,44 @@ const fetchClosures = async () => {
                         console.log(`Matched: "${school}" ↔ "${matchedSourceName}" in ${isd}, ${county} - Closed (Match score: ${matchScore.toFixed(1)}%)`);
                     }
 
+                    // Get previous state for this school if it exists
+                    const previousSchool = previousClosureData?.closures?.[isd]?.[county]?.[school];
+                    const previousClosed = previousSchool?.closed || false;
+                    const firstSeen = previousSchool?.firstSeen || fetchStartTime.toISOString();
+                    let lastStatusChange = previousSchool?.lastStatusChange || null;
+                    
+                    // Detect status change
+                    if (previousSchool && previousClosed !== isClosed) {
+                        lastStatusChange = fetchStartTime.toISOString();
+                        changeHistory.statusChanges.push({
+                            timestamp: fetchStartTime.toISOString(),
+                            isd: isd,
+                            county: county,
+                            school: school,
+                            from: previousClosed ? 'closed' : 'open',
+                            to: isClosed ? 'closed' : 'open'
+                        });
+                        console.log(`Status change detected: "${school}" in ${isd}, ${county} - ${previousClosed ? 'Closed' : 'Open'} → ${isClosed ? 'Closed' : 'Open'}`);
+                    }
+                    
+                    // Detect new school (first time we see it)
+                    if (!previousSchool) {
+                        changeHistory.schoolsAdded.push({
+                            timestamp: fetchStartTime.toISOString(),
+                            isd: isd,
+                            county: county,
+                            school: school
+                        });
+                    }
+
                     closuresByISD[isd][county][school] = {
                         closed: isClosed,
                         matchScore: matchScore > 0 ? Math.round(matchScore) : null,
                         originalStatus: originalStatus,
                         matchedSourceName: matchedSourceName, // Add source name for debugging
-                        lastChecked: fetchStartTime.toISOString()
+                        lastChecked: fetchStartTime.toISOString(),
+                        firstSeen: firstSeen,
+                        lastStatusChange: lastStatusChange
                     };
                 }
             }
@@ -252,6 +295,58 @@ const fetchClosures = async () => {
 
         const fetchEndTime = new Date();
         
+        // Detect removed schools (schools that were in previous data but not in current)
+        if (previousClosureData?.closures) {
+            for (let isd in previousClosureData.closures) {
+                for (let county in previousClosureData.closures[isd]) {
+                    for (let school in previousClosureData.closures[isd][county]) {
+                        if (!closuresByISD[isd] || !closuresByISD[isd][county] || !closuresByISD[isd][county][school]) {
+                            changeHistory.schoolsRemoved.push({
+                                timestamp: fetchStartTime.toISOString(),
+                                isd: isd,
+                                county: county,
+                                school: school
+                            });
+                            console.log(`School removed: "${school}" in ${isd}, ${county}`);
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Add to pull history
+        closureData.metadata.pullHistory.push({
+            timestamp: fetchEndTime.toISOString(),
+            success: true,
+            error: null,
+            totalSchools: totalSchools,
+            closedSchools: closedSchools
+        });
+        
+        // Keep only last 100 pull history entries to prevent memory bloat
+        if (closureData.metadata.pullHistory.length > 100) {
+            closureData.metadata.pullHistory = closureData.metadata.pullHistory.slice(-100);
+        }
+        
+        // Keep only last 1000 change events to prevent memory bloat
+        if (changeHistory.statusChanges.length > 1000) {
+            changeHistory.statusChanges = changeHistory.statusChanges.slice(-1000);
+        }
+        if (changeHistory.schoolsAdded.length > 1000) {
+            changeHistory.schoolsAdded = changeHistory.schoolsAdded.slice(-1000);
+        }
+        if (changeHistory.schoolsRemoved.length > 1000) {
+            changeHistory.schoolsRemoved = changeHistory.schoolsRemoved.slice(-1000);
+        }
+        
+        // Store current state as previous for next comparison
+        previousClosureData = JSON.parse(JSON.stringify({
+            closures: closuresByISD,
+            metadata: {
+                lastUpdated: fetchEndTime.toISOString()
+            }
+        }));
+        
         // Update closure data with enhanced structure
         closureData = {
             closures: closuresByISD,
@@ -260,7 +355,8 @@ const fetchClosures = async () => {
                 dataSource: url,
                 totalSchools: totalSchools,
                 closedSchools: closedSchools,
-                fetchError: null
+                fetchError: null,
+                pullHistory: closureData.metadata.pullHistory
             },
             isdStatus: isdStatus
         };
@@ -270,9 +366,25 @@ const fetchClosures = async () => {
     } catch (error) {
         console.error('Error fetching closures:', error.message);
         
+        const errorTime = new Date();
+        
+        // Add failed pull to history
+        closureData.metadata.pullHistory.push({
+            timestamp: errorTime.toISOString(),
+            success: false,
+            error: error.message,
+            totalSchools: closureData.metadata.totalSchools || 0,
+            closedSchools: closureData.metadata.closedSchools || 0
+        });
+        
+        // Keep only last 100 pull history entries
+        if (closureData.metadata.pullHistory.length > 100) {
+            closureData.metadata.pullHistory = closureData.metadata.pullHistory.slice(-100);
+        }
+        
         // Preserve existing data but update metadata with error
         closureData.metadata.fetchError = error.message;
-        closureData.metadata.lastUpdated = new Date().toISOString();
+        closureData.metadata.lastUpdated = errorTime.toISOString();
         
         // Return existing data structure even on error (graceful degradation)
         return closureData;
@@ -461,6 +573,65 @@ app.get('/api/closures/isd-status', (req, res) => {
         res.json(response);
     } catch (error) {
         console.error('Failed to get ISD status:', error);
+        sendError(res, 500, 'Internal Server Error', error.message);
+    }
+});
+
+// Get pull history
+app.get('/api/closures/pull-history', (req, res) => {
+    try {
+        const limit = parseInt(req.query.limit) || 50; // Default to last 50 pulls
+        const history = closureData.metadata.pullHistory.slice(-limit);
+        
+        const response = {
+            pullHistory: history,
+            totalPulls: closureData.metadata.pullHistory.length,
+            metadata: {
+                lastUpdated: closureData.metadata.lastUpdated
+            }
+        };
+
+        setCacheHeaders(res, response, 60);
+        res.json(response);
+    } catch (error) {
+        console.error('Failed to get pull history:', error);
+        sendError(res, 500, 'Internal Server Error', error.message);
+    }
+});
+
+// Get change history
+app.get('/api/closures/change-history', (req, res) => {
+    try {
+        const limit = parseInt(req.query.limit) || 100; // Default to last 100 changes
+        const type = req.query.type; // Optional: 'status', 'added', 'removed', or all if not specified
+        
+        let response = {
+            metadata: {
+                lastUpdated: closureData.metadata.lastUpdated
+            }
+        };
+        
+        if (!type || type === 'status') {
+            response.statusChanges = changeHistory.statusChanges.slice(-limit);
+        }
+        if (!type || type === 'added') {
+            response.schoolsAdded = changeHistory.schoolsAdded.slice(-limit);
+        }
+        if (!type || type === 'removed') {
+            response.schoolsRemoved = changeHistory.schoolsRemoved.slice(-limit);
+        }
+        
+        // Add counts
+        response.counts = {
+            totalStatusChanges: changeHistory.statusChanges.length,
+            totalSchoolsAdded: changeHistory.schoolsAdded.length,
+            totalSchoolsRemoved: changeHistory.schoolsRemoved.length
+        };
+
+        setCacheHeaders(res, response, 60);
+        res.json(response);
+    } catch (error) {
+        console.error('Failed to get change history:', error);
         sendError(res, 500, 'Internal Server Error', error.message);
     }
 });

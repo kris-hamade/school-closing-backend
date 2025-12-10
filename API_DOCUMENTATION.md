@@ -122,7 +122,9 @@ Retrieve complete closure data for all schools. This is the main endpoint and ma
           "closed": true,
           "matchScore": 95,
           "originalStatus": "Closed",
-          "lastChecked": "2024-01-15T10:30:00.000Z"
+          "lastChecked": "2024-01-15T10:30:00.000Z",
+          "firstSeen": "2024-01-15T08:00:00.000Z",
+          "lastStatusChange": "2024-01-15T10:30:00.000Z"
         }
       }
     }
@@ -132,7 +134,16 @@ Retrieve complete closure data for all schools. This is the main endpoint and ma
     "dataSource": "https://example.com/closures",
     "totalSchools": 1234,
     "closedSchools": 45,
-    "fetchError": null
+    "fetchError": null,
+    "pullHistory": [
+      {
+        "timestamp": "2024-01-15T10:30:00.000Z",
+        "success": true,
+        "error": null,
+        "totalSchools": 1234,
+        "closedSchools": 45
+      }
+    ]
   },
   "isdStatus": {
     "ISD Name": {
@@ -150,12 +161,20 @@ Retrieve complete closure data for all schools. This is the main endpoint and ma
   - `matchScore`: Fuzzy match score (0-100) indicating confidence in the match, or `null` if no match found
   - `originalStatus`: Original closure status text from the source, or `null` if no match found
   - `lastChecked`: ISO 8601 timestamp of when this school's status was last checked
+  - `firstSeen`: ISO 8601 timestamp of when this school was first detected in the system
+  - `lastStatusChange`: ISO 8601 timestamp of when this school's status last changed (open ↔ closed), or `null` if status has never changed
 - `metadata`: Overall data metadata
   - `lastUpdated`: ISO 8601 timestamp of the last successful data fetch
   - `dataSource`: URL of the data source
   - `totalSchools`: Total number of schools in the dataset
   - `closedSchools`: Number of schools currently closed
   - `fetchError`: Error message if last fetch failed, or `null` if successful
+  - `pullHistory`: Array of pull history entries (last 100 entries kept in memory)
+    - `timestamp`: ISO 8601 timestamp of when the pull occurred
+    - `success`: Boolean indicating if the pull was successful
+    - `error`: Error message if pull failed, or `null` if successful
+    - `totalSchools`: Total number of schools at the time of this pull
+    - `closedSchools`: Number of closed schools at the time of this pull
 - `isdStatus`: ISD-level closure statistics
   - `allClosed`: Boolean indicating if all schools in the ISD are closed
   - `closedCount`: Number of closed schools in the ISD
@@ -518,6 +537,182 @@ curl http://localhost:3023/api/closures/isd-status
 
 ---
 
+### 7. Get Pull History
+
+Retrieve the history of data pulls from the closure website.
+
+**Endpoint:** `GET /api/closures/pull-history`
+
+**Query Parameters:**
+- `limit` (optional): Number of recent pulls to return (default: 50, max: 100)
+
+**Response Codes:**
+- `200 OK`: Success
+- `500 Internal Server Error`: Server error
+
+**Response Body:**
+```json
+{
+  "pullHistory": [
+    {
+      "timestamp": "2024-01-15T10:30:00.000Z",
+      "success": true,
+      "error": null,
+      "totalSchools": 1234,
+      "closedSchools": 45
+    },
+    {
+      "timestamp": "2024-01-15T10:27:30.000Z",
+      "success": true,
+      "error": null,
+      "totalSchools": 1234,
+      "closedSchools": 44
+    }
+  ],
+  "totalPulls": 150,
+  "metadata": {
+    "lastUpdated": "2024-01-15T10:30:00.000Z"
+  }
+}
+```
+
+**Field Descriptions:**
+- `pullHistory`: Array of pull history entries, ordered from oldest to newest
+  - `timestamp`: ISO 8601 timestamp of when the pull occurred
+  - `success`: Boolean indicating if the pull was successful
+  - `error`: Error message if pull failed, or `null` if successful
+  - `totalSchools`: Total number of schools at the time of this pull
+  - `closedSchools`: Number of closed schools at the time of this pull
+- `totalPulls`: Total number of pulls recorded (may be more than returned if limit is used)
+- `metadata`: Metadata about the current data state
+
+**Example Request:**
+```bash
+curl "http://localhost:3023/api/closures/pull-history?limit=20"
+```
+
+**Note:** The system keeps the last 100 pull history entries in memory. Older entries are automatically removed to prevent memory bloat.
+
+---
+
+### 8. Get Change History
+
+Retrieve the history of changes to schools (status changes, additions, removals).
+
+**Endpoint:** `GET /api/closures/change-history`
+
+**Query Parameters:**
+- `limit` (optional): Number of recent changes to return per type (default: 100, max: 1000)
+- `type` (optional): Filter by change type - `status`, `added`, `removed`, or omit for all types
+
+**Response Codes:**
+- `200 OK`: Success
+- `500 Internal Server Error`: Server error
+
+**Response Body (all types):**
+```json
+{
+  "statusChanges": [
+    {
+      "timestamp": "2024-01-15T10:30:00.000Z",
+      "isd": "Kent Intermediate School District",
+      "county": "Kent County",
+      "school": "Grand Rapids Public Schools",
+      "from": "open",
+      "to": "closed"
+    }
+  ],
+  "schoolsAdded": [
+    {
+      "timestamp": "2024-01-15T10:30:00.000Z",
+      "isd": "Kent Intermediate School District",
+      "county": "Kent County",
+      "school": "New School District"
+    }
+  ],
+  "schoolsRemoved": [
+    {
+      "timestamp": "2024-01-15T10:30:00.000Z",
+      "isd": "Kent Intermediate School District",
+      "county": "Kent County",
+      "school": "Old School District"
+    }
+  ],
+  "counts": {
+    "totalStatusChanges": 45,
+    "totalSchoolsAdded": 2,
+    "totalSchoolsRemoved": 1
+  },
+  "metadata": {
+    "lastUpdated": "2024-01-15T10:30:00.000Z"
+  }
+}
+```
+
+**Response Body (filtered by type):**
+```json
+{
+  "statusChanges": [
+    {
+      "timestamp": "2024-01-15T10:30:00.000Z",
+      "isd": "Kent Intermediate School District",
+      "county": "Kent County",
+      "school": "Grand Rapids Public Schools",
+      "from": "open",
+      "to": "closed"
+    }
+  ],
+  "counts": {
+    "totalStatusChanges": 45,
+    "totalSchoolsAdded": 2,
+    "totalSchoolsRemoved": 1
+  },
+  "metadata": {
+    "lastUpdated": "2024-01-15T10:30:00.000Z"
+  }
+}
+```
+
+**Field Descriptions:**
+- `statusChanges`: Array of status change events (open ↔ closed)
+  - `timestamp`: ISO 8601 timestamp of when the change occurred
+  - `isd`: Intermediate School District name
+  - `county`: County name
+  - `school`: School name
+  - `from`: Previous status (`"open"` or `"closed"`)
+  - `to`: New status (`"open"` or `"closed"`)
+- `schoolsAdded`: Array of schools that were first detected
+  - `timestamp`: ISO 8601 timestamp of when the school was added
+  - `isd`: Intermediate School District name
+  - `county`: County name
+  - `school`: School name
+- `schoolsRemoved`: Array of schools that were removed from the dataset
+  - `timestamp`: ISO 8601 timestamp of when the school was removed
+  - `isd`: Intermediate School District name
+  - `county`: County name
+  - `school`: School name
+- `counts`: Total counts of all change events (regardless of limit)
+- `metadata`: Metadata about the current data state
+
+**Example Requests:**
+```bash
+# Get all change types
+curl "http://localhost:3023/api/closures/change-history?limit=50"
+
+# Get only status changes
+curl "http://localhost:3023/api/closures/change-history?type=status&limit=20"
+
+# Get only added schools
+curl "http://localhost:3023/api/closures/change-history?type=added"
+
+# Get only removed schools
+curl "http://localhost:3023/api/closures/change-history?type=removed"
+```
+
+**Note:** The system keeps the last 1000 change events of each type in memory. Older entries are automatically removed to prevent memory bloat.
+
+---
+
 ## Data Update Frequency
 
 The backend fetches new closure data from the external source every **2.5 minutes** (150 seconds). The data is cached in memory between fetches, so all API requests return the most recent cached data.
@@ -664,6 +859,8 @@ interface School {
   matchScore: number | null;  // 0-100, or null if no match
   originalStatus: string | null;  // Original status text, or null
   lastChecked: string;  // ISO 8601 timestamp
+  firstSeen: string;  // ISO 8601 timestamp of when school was first detected
+  lastStatusChange: string | null;  // ISO 8601 timestamp of last status change, or null
 }
 ```
 
@@ -684,6 +881,34 @@ interface Metadata {
   totalSchools: number;
   closedSchools: number;
   fetchError: string | null;  // Error message or null
+  pullHistory: PullHistoryEntry[];  // Array of pull history entries
+}
+
+interface PullHistoryEntry {
+  timestamp: string;  // ISO 8601 timestamp
+  success: boolean;
+  error: string | null;
+  totalSchools: number;
+  closedSchools: number;
+}
+```
+
+### Change History Objects
+```typescript
+interface StatusChange {
+  timestamp: string;  // ISO 8601 timestamp
+  isd: string;
+  county: string;
+  school: string;
+  from: 'open' | 'closed';
+  to: 'open' | 'closed';
+}
+
+interface SchoolChange {
+  timestamp: string;  // ISO 8601 timestamp
+  isd: string;
+  county: string;
+  school: string;
 }
 ```
 
@@ -695,7 +920,9 @@ interface Metadata {
 
 3. **Error Handling**: Always check response status codes and handle errors gracefully. The API provides structured error responses.
 
-4. **Data Freshness**: Check `metadata.lastUpdated` to display when data was last refreshed. The `metadata.fetchError` field indicates if there was an issue fetching the latest data.
+4. **Data Freshness**: Check `metadata.lastUpdated` to display when data was last refreshed. The `metadata.fetchError` field indicates if there was an issue fetching the latest data. Use `metadata.pullHistory` to show a history of data pulls.
+
+5. **Change Tracking**: Use the `/api/closures/change-history` endpoint to monitor when schools change status, are added, or are removed. The `firstSeen` and `lastStatusChange` fields on each school object provide per-school change tracking.
 
 5. **ISD-Level Closures**: Use the `isdStatus` object to quickly identify ISDs where all schools are closed (`allClosed: true`), which can improve UX by showing district-wide closures prominently.
 
