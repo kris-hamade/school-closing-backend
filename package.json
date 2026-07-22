@@ -1,23 +1,28 @@
 {
   "name": "school-closing",
   "version": "1.0.0",
-  "description": "",
+  "description": "Reliable Michigan school closure aggregation API",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
+    "dev": "node --watch server.js",
+    "test": "node --test --test-concurrency=1 test/*.test.js",
+    "test:coverage": "node --test --experimental-test-coverage --test-concurrency=1 test/*.test.js",
+    "lint": "node scripts/check.js",
+    "verify:frontend": "node scripts/verify-frontend-proxy.js",
     "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
     "axios": "^1.6.5",
     "cheerio": "^1.0.0-rc.12",
+    "compression": "^1.8.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.18.2",
-    "fuzzball": "^2.1.2",
-    "http": "^0.0.1-security",
-    "nodemon": "^3.0.3",
-    "ws": "^8.16.0"
+    "fuzzball": "^2.1.2"
   }
 }

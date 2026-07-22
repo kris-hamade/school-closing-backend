@@ -1,0 +1,15 @@
+{
+  "Michigan": {
+    "Example ISD": {
+      "Example County": [
+        "Mount Pleasant Public Schools",
+        "Oxford Community Schools",
+        "Oxford Christian Academy",
+        "Sault Ste. Marie Area Schools"
+      ]
+    },
+    "Second ISD": {
+      "Lake County": ["Lake Shore Public Schools"]
+    }
+  }
+}
